@@ -7,7 +7,8 @@ import { userRegister ,
     getCurrentUser,
     updateAccountDetails,
     updateUserAvatar,
-    updateUserCoverImage
+    updateUserCoverImage,
+    getChannelProfile
  } from "../controller/user.controllers.js";
 import {upload} from "../middlewares/multer.middlewares.js"
 import {varifyJWT} from "../middlewares/auth.middlewares.js"
@@ -46,5 +47,6 @@ router.route("/update-avatar").patch(varifyJWT, upload.single("avatar"), updateU
 
 router.route("/update-coverImage").patch(varifyJWT, upload.single("coverImage"), updateUserCoverImage)
 
+router.route("/c/:username").get(varifyJWT, getChannelProfile)
 
 export default router
